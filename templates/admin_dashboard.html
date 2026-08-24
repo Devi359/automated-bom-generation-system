@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+
+    <style>
+        body{
+            margin:0;
+            font-family:Arial;
+            background:#111;
+            color:white;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+        }
+
+        .card{
+            width:400px;
+            background:#1c1c1c;
+            padding:40px;
+            border-radius:15px;
+            text-align:center;
+            box-shadow:0 0 20px rgba(0,0,0,.5);
+        }
+
+        .btn{
+            display:block;
+            margin-top:20px;
+            padding:15px;
+            border:none;
+            border-radius:8px;
+            width:100%;
+            font-size:16px;
+            cursor:pointer;
+            color:white;
+            background:linear-gradient(45deg,#ff512f,#dd2476);
+        }
+
+        a{
+            text-decoration:none;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="card">
+
+        <h1>Admin Panel</h1>
+
+        <p>Manage BOM Part Prices</p>
+
+        <a href="/update_price">
+            <button class="btn">
+                Manage Prices
+            </button>
+        </a>
+
+        <a href="/logout">
+            <button class="btn">
+                Logout
+            </button>
+        </a>
+
+    </div>
+
+</body>
+</html>
