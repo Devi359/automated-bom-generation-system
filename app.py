@@ -3,7 +3,7 @@ import requests
 from collections import defaultdict
 import re
 from reportlab.lib.pagesizes import letter
-from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, Spacer
+from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, Spacer 
 from reportlab.lib import colors
 from reportlab.lib.styles import getSampleStyleSheet
 
