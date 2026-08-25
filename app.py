@@ -12,9 +12,9 @@ app = Flask(__name__)
 app.secret_key = "onshape_final_project_key"
 
 # CONFIG
-CLIENT_ID = os.environ.get("CLIENT_ID")
-CLIENT_SECRET = os.environ.get("CLIENT_SECRET")
-REDIRECT_URI = os.environ.get("REDIRECT_URI")
+CLIENT_ID = os.environ.get("CLIENT_ID", "").strip()
+CLIENT_SECRET = os.environ.get("CLIENT_SECRET", "").strip()
+REDIRECT_URI = os.environ.get("REDIRECT_URI", "").strip()
 
 DOC_ID = "b1587e4dbf8a1c9022a6bb56"
 WORK_ID = "9cf669ee555c6649d6218399"
