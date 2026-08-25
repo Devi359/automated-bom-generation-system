@@ -3,6 +3,7 @@ import requests
 from collections import defaultdict
 import os
 import re
+from urllib.parse import urlencode
 from reportlab.lib.pagesizes import letter
 from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, Spacer
 from reportlab.lib import colors
@@ -78,11 +79,15 @@ def login():
 
     session.clear()
 
+    params = {
+        "response_type": "code",
+        "client_id": CLIENT_ID,
+        "redirect_uri": REDIRECT_URI
+    }
+
     auth_url = (
-        f"https://oauth.onshape.com/oauth/authorize?"
-        f"response_type=code&"
-        f"client_id={CLIENT_ID}&"
-        f"redirect_uri={REDIRECT_URI}"
+        "https://oauth.onshape.com/oauth/authorize?"
+        + urlencode(params)
     )
 
     return redirect(auth_url)
@@ -122,6 +127,9 @@ def callback():
 
     code = request.args.get("code")
 
+    if not code:
+        return "Authorization code missing", 400
+
     response = requests.post(
         "https://oauth.onshape.com/oauth/token",
         data={
@@ -129,8 +137,17 @@ def callback():
             "code": code,
             "redirect_uri": REDIRECT_URI
         },
-        auth=(CLIENT_ID, CLIENT_SECRET)
+        auth=(CLIENT_ID, CLIENT_SECRET),
+        headers={
+            "Accept": "application/json"
+        }
     )
+
+    if response.status_code != 200:
+        return (
+            f"OAuth Error: {response.text}",
+            response.status_code
+        )
 
     data = response.json()
 
@@ -141,7 +158,7 @@ def callback():
 
         return redirect("/dashboard")
 
-    return "Auth Failed"
+    return f"Auth Failed: {response.text}", 400
 
 
 # ====================================================
