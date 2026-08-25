@@ -90,6 +90,8 @@ def login():
         + urlencode(params)
     )
 
+    print("DEBUG REDIRECT_URI:", repr(REDIRECT_URI))
+
     return redirect(auth_url)
 
 
