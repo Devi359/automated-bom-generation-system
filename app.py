@@ -1,10 +1,10 @@
 from flask import Flask, redirect, request, session, Response, send_file, render_template
 import requests
-import os
 from collections import defaultdict
+import os
 import re
 from reportlab.lib.pagesizes import letter
-from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, Spacer 
+from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, Spacer
 from reportlab.lib import colors
 from reportlab.lib.styles import getSampleStyleSheet
 
@@ -14,7 +14,7 @@ app.secret_key = "onshape_final_project_key"
 # CONFIG
 CLIENT_ID = os.environ.get("CLIENT_ID", "").strip()
 CLIENT_SECRET = os.environ.get("CLIENT_SECRET", "").strip()
-REDIRECT_URI = os.environ.get("REDIRECT_URI", "").strip()
+REDIRECT_URI = os.environ.get("REDIRECT_URI", "").strip() 
 
 DOC_ID = "b1587e4dbf8a1c9022a6bb56"
 WORK_ID = "9cf669ee555c6649d6218399"
