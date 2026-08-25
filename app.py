@@ -1,5 +1,6 @@
 from flask import Flask, redirect, request, session, Response, send_file, render_template
 import requests
+import os
 from collections import defaultdict
 import re
 from reportlab.lib.pagesizes import letter
@@ -11,9 +12,9 @@ app = Flask(__name__)
 app.secret_key = "onshape_final_project_key"
 
 # CONFIG
-CLIENT_ID = "VHQKGBIKV5XJ4JVW4SINNG2HTCVWIMC2VQDSLIY="
-CLIENT_SECRET = "KIR7VJQLNDSBL5N4PHYND62EA5EXKYVI7QHBCBXGVK4J6KM2GQOA===="
-REDIRECT_URI = "http://localhost:5000/callback"
+CLIENT_ID = os.environ.get("CLIENT_ID")
+CLIENT_SECRET = os.environ.get("CLIENT_SECRET")
+REDIRECT_URI = os.environ.get("REDIRECT_URI")
 
 DOC_ID = "b1587e4dbf8a1c9022a6bb56"
 WORK_ID = "9cf669ee555c6649d6218399"
