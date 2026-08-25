@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hierarchy</title>
+    <style>
+        ul { list-style-type: none; }
+        li { margin: 5px 0; }
+    </style>
+</head>
+<body>
+
+<h2>BOM Hierarchy</h2>
+
+<ul>
+    {% macro render(node) %}
+        <li>
+            {{ node.name }}
+            {% if node.children %}
+            <ul>
+                {% for child in node.children %}
+                    {{ render(child) }}
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </li>
+    {% endmacro %}
+
+    {{ render(hierarchy) }}
+</ul>
+
+</body>
+</html>
